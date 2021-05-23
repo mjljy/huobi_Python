@@ -63,7 +63,7 @@ def main():
                 vol_100y.append(bizhong.base_currency)'''
         # if bizhong.base_currency == 'sushi':
             # tradeinfo.print_object()
-
+    vol_all['100w']= {''}
 
 
         # time.sleep(0.01)
