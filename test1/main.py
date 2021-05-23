@@ -17,6 +17,8 @@ import time
 
 def main():
     # pass
+    long_short_partition = ['eth1s','btc1s','xrp3l','dot2l','zec3l','uni2l','ltc3s','bsv3l','dot2s','eth3l',
+    'bsv3s','zec3s','uni2s','btc3l','fil3s','eos3s','btc3s','xrp3s','link3s','eth3s','bch3s','dai','usdc']
     generic_client = GenericClient()
     list_obj = generic_client.get_exchange_symbols()
     usdt_list_symbol = []
@@ -37,9 +39,9 @@ def main():
     vol_50y_100y =[]
     vol_100y =[]
     vol_all = {}
-    for bizhong in usdt_list_symbol  :
-        # if bizhong.state == "online" and bizhong.base_currency == 'sushi':
-        if bizhong.state == "online":
+    for bizhong in usdt_list_symbol :
+        if bizhong.state == "online" and ( bizhong.base_currency not in long_short_partition):
+        # if bizhong.state == "online":
             tradeinfo = market_client.get_market_detail(bizhong.symbol)
             if tradeinfo.vol * 6.79 <= 1000000:#小于100w
                 vol_100w.append(bizhong.base_currency)
@@ -69,94 +71,122 @@ def main():
 
 
         # time.sleep(0.01)
-    print('小于100w',vol_100w)
-    print('--------------------------------------')
-    print('小于500w 大于100w',vol_100w_500w)
-    print('--------------------------------------')
-    print('小于1000w 大于500w',vol_500w_1000w)
-    print('--------------------------------------')
-    print('小于5000w 大于1000w',vol_5000w_1000w)
-    print('--------------------------------------')
-    print('小于1y 大于5000w',vol_5000w_1y)
-    print('--------------------------------------')
-    print('大于1y_5y',vol_1y_5y)
-    print('--------------------------------------')
-    print('大于5y_10y',vol_5y_10y)
-    print('--------------------------------------')
-    print('大于10y_20y',vol_10y_20y)
-    print('--------------------------------------')
-    print('大于20y_50y',vol_20y_50y)
-    print('--------------------------------------')
-    print('大于50y_100y',vol_50y_100y)
-    print('--------------------------------------')
-    print('大于100y',vol_100y)
+    # print('小于100w',vol_100w)
+    # print('--------------------------------------')
+    # print('小于500w 大于100w',vol_100w_500w)
+    # print('--------------------------------------')
+    # print('小于1000w 大于500w',vol_500w_1000w)
+    # print('--------------------------------------')
+    # print('小于5000w 大于1000w',vol_5000w_1000w)
+    # print('--------------------------------------')
+    # print('小于1y 大于5000w',vol_5000w_1y)
+    # print('--------------------------------------')
+    # print('大于1y_5y',vol_1y_5y)
+    # print('--------------------------------------')
+    # print('大于5y_10y',vol_5y_10y)
+    # print('--------------------------------------')
+    # print('大于10y_20y',vol_10y_20y)
+    # print('--------------------------------------')
+    # print('大于20y_50y',vol_20y_50y)
+    # print('--------------------------------------')
+    # print('大于50y_100y',vol_50y_100y)
+    # print('--------------------------------------')
+    # print('大于100y',vol_100y)
     # sysmbol_list= []
     long_dict = collections.OrderedDict()
     market_client = MarketClient(init_log=True)
-    for bizhong in usdt_list_symbol[0:1]:
-        # long_flag = True
-        day_times = 0
-        interval = CandlestickInterval.DAY1
-        # symbol = "ethusdt"
-        symbol = bizhong.symbol
-        print('symbol',symbol)
-        list_obj = market_client.get_candlestick(symbol, interval, 30)
-        for candlestick in list_obj:
-            # print(candle)
-            # candlestick.print_object()
-            if candlestick.open >= candlestick.close:
-                day_times = day_times+1
-            else:
-                break
-                # long_flag = False
-        long_dict[bizhong.base_currency] = day_times
-        # if not long_flag:
-            # break
+    # print(usdt_list_symbol[0:1].[0])
+    # print(usdt_list_symbol[0:1][0].symbol)
+    for bizhong in usdt_list_symbol:
+        # if bizhong.state == "online" and ( bizhong.base_currency in ('bsv3s','zec3s','fil3s','link3s','eth3s')):
+       if bizhong.state == "online" and ( bizhong.base_currency not in long_short_partition):
+        # if bizhong.state == "online" :
+            # long_flag = True
+            day_times = 0
+            interval = CandlestickInterval.DAY1
+            # symbol = "ethusdt"
+            symbol = bizhong.symbol
+            # print('symbol',symbol)
+            list_obj = market_client.get_candlestick(symbol, interval, 30)
+            for candlestick in list_obj:
+                # print(candle)
+                # candlestick.print_object()
+                if candlestick.open <= candlestick.close:
+                    day_times = day_times+1
+                else:
+                    break
+                    # long_flag = False
+            # print('bizhong',bizhong.base_currency)
+            # print('times',day_times)
+            long_dict[bizhong.base_currency] = day_times
+            # if not long_flag:
+                # break
+
+
+
     print('小于100w', vol_100w)
     for x, y in long_dict.items():
-        if x in 
-        print('连续上涨', y, '天  币种', x)
+        if x in vol_100w:
+            if y >0:
+                print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
     print('小于500w 大于100w', vol_100w_500w)
     for x, y in long_dict.items():
-        print('连续上涨', y, '天  币种', x)
-    print('--------------------------------------')
-    print('小于1000w 大于500w', vol_500w_1000w)
+        if x in vol_100w_500w:
+            if y >0:
+                print('连续上涨', y, '天  币种', x)
     for x, y in long_dict.items():
-        print('连续上涨', y, '天  币种', x)
+        if x in vol_500w_1000w:
+            if y >0:
+                print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
     print('小于5000w 大于1000w', vol_5000w_1000w)
     for x, y in long_dict.items():
-        print('连续上涨', y, '天  币种', x)
+        if x in vol_5000w_1000w:
+            if y >0:
+                print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
     print('小于1y 大于5000w', vol_5000w_1y)
     for x, y in long_dict.items():
-        print('连续上涨', y, '天  币种', x)
+        if x in vol_5000w_1y:
+             if y >0:
+                print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
     print('大于1y_5y', vol_1y_5y)
     for x, y in long_dict.items():
-        print('连续上涨', y, '天  币种', x)
+        if x in vol_1y_5y:
+             if y >0:
+                print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
     print('大于5y_10y', vol_5y_10y)
     for x, y in long_dict.items():
-        print('连续上涨', y, '天  币种', x)
+        if x in vol_5y_10y:
+            if y >0:
+                print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
     print('大于10y_20y', vol_10y_20y)
     for x, y in long_dict.items():
-        print('连续上涨', y, '天  币种', x)
+        if x in vol_10y_20y:
+            if y >0:
+                print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
     print('大于20y_50y', vol_20y_50y)
     for x, y in long_dict.items():
-        print('连续上涨', y, '天  币种', x)
+        if x in vol_20y_50y:
+            if y >0:
+                print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
     print('大于50y_100y', vol_50y_100y)
     for x, y in long_dict.items():
-        print('连续上涨', y, '天  币种', x)
+        if x in vol_50y_100y:
+            if y >0:
+                print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
     print('大于100y', vol_100y)
     for x, y in long_dict.items():
-        print('连续上涨', y, '天  币种', x)
-
+        if x in vol_100y:
+            if y >0:
+                print('连续上涨', y, '天  币种', x)
 
 
     
