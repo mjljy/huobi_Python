@@ -6,11 +6,11 @@ class MarketDetail:
         id: response ID
         open: The opening price of last 24 hours.
         close: The last price of last 24 hours.
-        amount: The aggregated trading volume in USDT.
+        amount: The aggregated trading volume in USDT.   总计btc的成交数量
         high: The high price of last 24 hours.
         low: The low price of last 24 hours.
         count: The number of completed trades.
-        volume: The trading volume in base currency of last 24 hours.
+        volume: The trading volume in base currency of last 24 hours.   以报价币种计量的交易量 usdt成交量 
         version: inner data
     """
 

@@ -30,8 +30,10 @@ class Candlestick:
 
     def print_object(self, format_data=""):
         from huobi.utils.print_mix_object import PrintBasic
-        PrintBasic.print_basic(self.id, format_data + "Id")
+        # PrintBasic.print_basic(self.id, format_data + "Id")
         #PrintBasic.print_basic(self.timestamp, format_data + "Unix Time")
+        import time
+        PrintBasic.print_basic(time.ctime(self.id), format_data + "Id")
         PrintBasic.print_basic(self.high, format_data + "High")
         PrintBasic.print_basic(self.low, format_data + "Low")
         PrintBasic.print_basic(self.open, format_data + "Open")

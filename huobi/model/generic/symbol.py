@@ -21,7 +21,24 @@ class Symbol:
         sell_market_max_order_amt: Max order amount of sell-market order in base currency (NEW)
         buy_market_max_order_amt: Max order value of buy-market order in quote currency (NEW)
         max_order_value: Max order value of limit order and buy-market order in usdt (NEW)
-
+    Base Currency : nest  基础币种名称
+	Quote Currency : eth  报价币种
+	Price Precision : 8   价格小数位
+	Amount Precision ：2  报单数量小数位
+	Symbol Partition : innovation   所在的板块   main 主板 可能值: [main，innovation]
+	Symbol : nesteth        交易对
+	State : online      [online，offline,suspend] online - 已上线；offline - 交易对已下线，不可交易；suspend -- 交易暂停；pre-online - 即将上线
+	Value Precision : 8     交易对交易金额的精度
+	Min Order Amount : 1    交易对限价单最小下单量 ，以基础币种为单位（即将废弃）
+	Max Order Amount : 25000000    交易对限价单最大下单量 ，以基础币种为单位（即将废弃）
+	Min Order Value : 0.01         交易对限价单和市价买单最小下单金额 ，以计价币种为单位
+	Leverage Ratio : 0             交易对杠杆最大倍数
+	Minimum order amount (Limit Order) : 1
+	Max order amount (Limit Order) : 25000000
+	Min order amount (Sell Market Order) : 1
+	Max order amount (Sell Market Order) : 2500000
+	Max order value (Buy Market Order) : 400
+	Max order value (In USDT) : 0
     """
 
     def __init__(self):
