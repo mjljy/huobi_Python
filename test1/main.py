@@ -99,6 +99,7 @@ def main():
         interval = CandlestickInterval.DAY1
         # symbol = "ethusdt"
         symbol = bizhong.symbol
+        print('symbol',symbol)
         list_obj = market_client.get_candlestick(symbol, interval, 30)
         for candlestick in list_obj:
             # print(candle)
@@ -108,11 +109,12 @@ def main():
             else:
                 break
                 # long_flag = False
-        long_dict[bizhong.quote_currency] = day_times
+        long_dict[bizhong.base_currency] = day_times
         # if not long_flag:
             # break
     print('小于100w', vol_100w)
     for x, y in long_dict.items():
+        if x in 
         print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
     print('小于500w 大于100w', vol_100w_500w)
