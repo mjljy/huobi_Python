@@ -124,68 +124,74 @@ def main():
 
 
 
-    print('小于100w', vol_100w)
+    # print('小于100w', vol_100w)
+    print('小于100w')
     for x, y in long_dict.items():
         if x in vol_100w:
-            if y >0:
+            if y >1:
                 print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
-    print('小于500w 大于100w', vol_100w_500w)
+    # print('小于500w 大于100w', vol_100w_500w)
+    print('小于500w 大于100w')
     for x, y in long_dict.items():
         if x in vol_100w_500w:
-            if y >0:
-                print('连续上涨', y, '天  币种', x)
-    for x, y in long_dict.items():
-        if x in vol_500w_1000w:
-            if y >0:
+            if y >1:
                 print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
-    print('小于5000w 大于1000w', vol_5000w_1000w)
+    # print('小于5000w 大于1000w', vol_5000w_1000w)
+    print('小于5000w 大于1000w')
     for x, y in long_dict.items():
         if x in vol_5000w_1000w:
-            if y >0:
+            if y >1:
                 print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
-    print('小于1y 大于5000w', vol_5000w_1y)
+    # print('小于1y 大于5000w', vol_5000w_1y)
+    print('小于1y 大于5000w')
     for x, y in long_dict.items():
         if x in vol_5000w_1y:
-             if y >0:
+             if y >1:
                 print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
-    print('大于1y_5y', vol_1y_5y)
+    # print('大于1y_5y', vol_1y_5y)
+    print('大于1y_5y')
     for x, y in long_dict.items():
         if x in vol_1y_5y:
-             if y >0:
+             if y >1:
                 print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
-    print('大于5y_10y', vol_5y_10y)
+    # print('大于5y_10y', vol_5y_10y)
+    print('大于5y_10y')
     for x, y in long_dict.items():
         if x in vol_5y_10y:
-            if y >0:
+            if y >1:
                 print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
-    print('大于10y_20y', vol_10y_20y)
+    # print('大于10y_20y', vol_10y_20y)
+    print('大于10y_20y')
     for x, y in long_dict.items():
         if x in vol_10y_20y:
-            if y >0:
+            if y >1:
                 print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
-    print('大于20y_50y', vol_20y_50y)
+    # print('大于20y_50y', vol_20y_50y)
+    print('大于20y_50y')
     for x, y in long_dict.items():
         if x in vol_20y_50y:
-            if y >0:
+            if y >1:
                 print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
-    print('大于50y_100y', vol_50y_100y)
+    # print('大于50y_100y', vol_50y_100y)
+    print('大于50y_100y')
     for x, y in long_dict.items():
         if x in vol_50y_100y:
-            if y >0:
+            if y >1:
                 print('连续上涨', y, '天  币种', x)
     print('--------------------------------------')
-    print('大于100y', vol_100y)
+    # print('大于100y', vol_100y)
+    print('大于100y')
     for x, y in long_dict.items():
         if x in vol_100y:
-            if y >0:
+            if y >1:
                 print('连续上涨', y, '天  币种', x)
 
 
